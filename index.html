@@ -252,3 +252,76 @@
     </script>
 </body>
 </html>
+    <!-- REAL 3D SPACE JAVASCRIPT LOGIC -->
+    <script>
+        // Orbits ka size (rx = width, ry = height)
+        const rx1 = 200, ry1 = 50; 
+        const rx2 = 260, ry2 = 65;
+
+        // Solar system ka center point mobile ke mutabik auto-set
+        const cx = 275, cy = 225;
+
+        let angle = 0;
+
+        function animateSolarSystem() {
+            angle += 0.008; // Ghoomne ki speed
+
+            // 1. BURGER (Inner Orbit)
+            const bCos = Math.cos(angle);
+            const bSin = Math.sin(angle);
+            const burgerX = cx + rx1 * bCos - 37;
+            const burgerY = cy + ry1 * bSin - 37;
+            // Z-Axis Depth: Jab bSin -1 ho toh piche, +1 ho toh ekdum aage
+            const burgerZ = bSin * 100; 
+            const burgerScale = 0.6 + (bSin + 1) * 0.25; // Piche chhota (0.6), aage bada (1.1)
+            const burgerZIndex = Math.round((bSin + 1) * 10) + 10; // Pizza ke piche ya aage bhejne ke liye
+
+            gsap.set("#burgerPlanet", { 
+                x: burgerX, 
+                y: burgerY, 
+                z: burgerZ,
+                scale: burgerScale,
+                zIndex: burgerZIndex
+            });
+
+            // 2. PANEER TIKKA (Outer Orbit - Opposite Side)
+            const pCos = Math.cos(angle + Math.PI);
+            const pSin = Math.sin(angle + Math.PI);
+            const paneerX = cx + rx2 * pCos - 37;
+            const paneerY = cy + ry2 * pSin - 37;
+            const paneerZ = pSin * 120;
+            const paneerScale = 0.55 + (pSin + 1) * 0.25;
+            const paneerZIndex = Math.round((pSin + 1) * 10) + 10;
+
+            gsap.set("#paneerPlanet", { 
+                x: paneerX, 
+                : paneerY, 
+                z: paneerZ,
+                scale: paneerScale,
+                zIndex: paneerZIndex
+            });
+
+            // 3. ROTI-SAAG (Outer Orbit - 90 Degree Gap)
+            const rCos = Math.cos(angle + Math.PI / 1.5);
+            const rSin = Math.sin(angle + Math.PI / 1.5);
+            const rotiX = cx + rx2 * rCos - 37;
+            const rotiY = cy + ry2 * rSin - 37;
+            const rotiZ = rSin * 120;
+            const rotiScale = 0.55 + (rSin + 1) * 0.25;
+            const rotiZIndex = Math.round((rSin + 1) * 10) + 10;
+
+            gsap.set("#rotiPlanet", { 
+                x: rotiX, 
+                y: rotiY, 
+                z: rotiZ,
+                scale: rotiScale,
+                zIndex: rotiZIndex
+            });
+
+            requestAnimationFrame(animateSolarSystem);
+        }
+
+        // Run the 3D depth system loop
+        animateSolarSystem();
+    </script>
+    
