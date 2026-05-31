@@ -3,351 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamdhenu Restaurant - Experience Our 3D Flavor</title>
-    
-    <!-- Premium Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS Bootstrap Alternate for Premium Layouts -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <!-- GSAP Animation Core Library -->
+    <title>Honest Sargasan - Premium 3D Experience</title>
+    <!-- Tailwind CSS for modern layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP for Ultra Smooth 3D & Scroll Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <style>
-        /* 1. GLOBAL PREMIUM THEME & BACKGROUND */
         body {
-            background: radial-gradient(circle at 50% 35%, #1f1b13 0%, #0d0c0a 50%, #050504 100%);
-            color: #f4f4f0;
-            font-family: 'Outfit', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            position: relative;
         }
-
-        .luxury-heading {
-            font-family: 'Cinzel', serif;
+        /* Custom scrollbar to match the charcoal theme */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* Gold Dust Shimmer Background Effect */
-        .gold-dust {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: radial-gradient(rgba(245, 158, 11, 0.04) 1.5px, transparent 0);
-            background-size: 32px 32px;
-            pointer-events: none;
-            z-index: 1;
+        ::-webkit-scrollbar-track {
+            background: #121212;
         }
-
-        /* 2. SOLAR SYSTEM 3D CANVAS LAYER */
-        .cosmic-stage {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px; /* Gives realistic 3D depth */
+        ::-webkit-scrollbar-thumb {
+            background: #e67e22;
+            border-radius: 4px;
         }
-
-        /* Central Sun - Main Luxury Pizza */
-        .central-pizza {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            z-index: 30; /* Locked in Center Layer */
-            box-shadow: 0 0 60px rgba(245, 158, 11, 0.35);
-            background: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=400') center/cover;
-            transform-style: preserve-3d;
-        }
-
-        /* 3D Tilted Orbit Rings Background Track */
-        .orbit-track {
-            position: absolute;
-            border: 1px dashed rgba(245, 158, 11, 0.15);
-            border-radius: 50%;
-            transform: rotateX(72deg); /* Matching exact perspective angle */
-            pointer-events: none;
-        }
-        .track-1 { width: 380px; height: 380px; z-index: 5; }
-        .track-2 { width: 520px; height: 520px; z-index: 4; }
-
-        /* Satellite Food Items (Planets) */
-        .satellite-dish {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #d97706;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
-            transform-style: preserve-3d;
-            background-size: cover;
-            background-position: center;
-        }
-
-        #burgerNode { background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=150'); }
-        #paneerNode { background-image: url('https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&q=80&w=150'); }
-        #rotiNode   { background-image: url('https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&q=80&w=150'); }
-
-        /* Glow Behind Main Stage */
-        .stage-glow {
-            position: absolute;
-            width: 350px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 70%);
-            filter: blur(30px);
-            z-index: 2;
-            transform: rotateX(72deg);
-            pointer-events: none;
+        /* Ambient Tandoor Glow Behind 3D Items */
+        .glow-bg {
+            background: radial-gradient(circle, rgba(230,126,34,0.2) 0%, rgba(18,18,18,0) 60%);
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient Grid Background Layer -->
-    <div class="gold-dust"></div>
-
-    <!-- NAVBAR LAYER -->
-    <nav class="fixed top-0 left-0 w-full flex justify-between items-center px-8 md:px-16 py-6 z-50 bg-gradient-to-b from-[#0d0c0a] to-transparent">
-        <div class="text-xl md:text-2xl font-black text-amber-500 tracking-widest luxury-heading">KAMDHENU</div>
-        <div class="hidden md:flex gap-10 text-xs tracking-widest uppercase text-gray-400 font-semibold">
-            <a href="#" class="text-amber-500">Home</a>
-            <a href="#menu-display" class="hover:text-amber-500 transition">Our Menu</a>
-            <a href="#" class="hover:text-amber-500 transition">Bookings</a>
-            <a href="#" class="hover:text-amber-500 transition">About Us</a>
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#1a1a1a]/80 backdrop-blur-md px-8 py-4 flex justify-between items-center border-b border-gray-800">
+        <div class="text-2xl font-bold text-[#e67e22] tracking-wider">HONEST</div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium text-gray-300">
+            <a href="#menu" class="hover:text-[#e67e22] transition">Menu</a>
+            <a href="#reservations" class="hover:text-[#e67e22] transition">Reservations</a>
+            <a href="#location" class="hover:text-[#e67e22] transition">Location</a>
         </div>
+        <button class="bg-[#e67e22] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#d35400] transition uppercase text-xs tracking-wider">
+            Order Online
+        </button>
     </nav>
 
-    <!-- 1. HERO SECTION (THE DYNAMIC 3D ORBIT VIEW) -->
-    <section class="min-h-screen flex flex-col lg:flex-row items-center justify-between px-8 md:px-16 pt-28 pb-12 gap-12 relative z-10">
-        <div class="max-w-xl text-left">
-            <span class="text-amber-500 text-xs font-bold tracking-widest uppercase border-b-2 border-amber-500/60 pb-1">Sargasan's Premium Vegetarian Paradise</span>
-            <h1 class="text-5xl md:text-6xl font-black mt-6 mb-6 leading-tight luxury-heading text-amber-50/90">Experience Our<br><span class="text-amber-500">3D Flavor</span></h1>
-            <p class="text-base md:text-lg text-gray-400 mb-8 leading-relaxed">Hamara special solar system structure jo aapki screen par real-time 3D rotation dimensions ke saath ghumta hai. Ek aisa swad jise dekh kar hi craving shuru ho jaye.</p>
-            <a href="#menu-display" class="inline-block bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold uppercase tracking-wider text-xs py-4 px-8 rounded-full shadow-xl shadow-amber-500/10 transition-all transform hover:scale-105">Explore Full Menu</a>
-        </div>
+    <!-- 3D FLOATING ANIMATED CANVAS (Yeh element scroll ke sath screen par hi tikega aur ghumega) -->
+    <div class="fixed top-0 right-0 w-full md:w-1/2 h-screen z-20 pointer-events-none flex justify-center items-center overflow-hidden">
+        <div class="absolute w-[400px] h-[400px] glow-bg rounded-full dynamic-glow"></div>
+        
+        <!-- Main 3D Hero Items (PNGs) -->
+        <img id="hero-food" src="images/bhaji_pav.png" alt="Butter Pav Bhaji" class="absolute w-[380px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
+    </div>
 
-        <!-- Dynamic Math Orbit Workspace Container -->
-        <div class="cosmic-stage">
-            <div class="stage-glow"></div>
-            
-            <!-- Structural Track Guidelines -->
-            <div class="orbit-track track-1"></div>
-            <div class="orbit-track track-2"></div>
-
-            <!-- Central Sun Anchor Element -->
-            <div class="central-pizza"></div>
-            
-            <!-- Real Multi-Dimension Floating Planetary Items -->
-            <div class="satellite-dish" id="burgerNode"></div>
-            <div class="satellite-dish" id="paneerNode"></div>
-            <div class="satellite-dish" id="rotiNode"></div>
+    <!-- 2. STAGE 1: THE WARM SWAGAT (Hero Section) -->
+    <section class="relative min-h-screen flex items-center px-6 md:px-20 z-10">
+        <div class="max-w-xl space-y-6">
+            <p class="text-[#e67e22] text-xs font-bold uppercase tracking-widest">The Warm Swagat</p>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-[#f39c12] leading-tight">
+                Honest Sargasan - Serving Legacies of Taste since 1975
+            </h1>
+            <p class="text-gray-400 text-lg">
+                Experience the magic of authentic flavors prepared in pure Amul Butter, crafted to perfection.
+            </p>
+            <a href="#menu" class="inline-block bg-gradient-to-r from-[#f39c12] to-[#e67e22] text-black font-bold px-8 py-3 rounded-md shadow-lg hover:opacity-90 transition">
+                View Full Menu
+            </a>
         </div>
     </section>
 
-    <!-- 2. LUXURY DATA GRID MENU SECTION -->
-    <section id="menu-display" class="py-20 px-8 md:px-16 bg-gradient-to-b from-zinc-950/60 to-[#0d0c0a] border-t border-zinc-900/80 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-black luxury-heading text-amber-500 mb-4">Our Signature Culinary Marvels</h2>
-            <p class="text-gray-400 max-w-lg mx-auto text-sm md:text-base">Ghar ke shuddh masale aur bilkul fresh ingredients se bani premium menu card items.</p>
+    <!-- 3. STAGE 2: THE SOUTH INDIAN TRANSITION -->
+    <section id="scroll-stage-2" class="relative min-h-screen flex items-center px-6 md:px-20 z-10 bg-[#161d16]/30">
+        <div class="max-w-xl space-y-6">
+            <p class="text-green-500 text-xs font-bold uppercase tracking-widest">The South Indian Transition</p>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
+                Authentic South Indian Flavors – Prepared in Pure Amul Butter.
+            </h2>
+            <p class="text-gray-400 text-lg">
+                Taste the crispiness of our legendary Mysore Masala Dosa served with steaming hot sambhar and fresh coconut chutney.
+            </p>
         </div>
+    </section>
 
-        <!-- Segment A: Fast Food / Starters -->
-        <div class="mb-16">
-            <h3 class="text-lg font-bold border-l-4 border-amber-500 pl-4 mb-8 text-amber-100 tracking-wider uppercase">Signature Starters & Fast Food</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- 4. STAGE 3: THE PUNJABI FEAST & BOUNCE -->
+    <section id="scroll-stage-3" class="relative min-h-screen flex items-center px-6 md:px-20 z-10">
+        <div class="max-w-xl space-y-6">
+            <p class="text-[#e67e22] text-xs font-bold uppercase tracking-widest">The Punjabi Feast & Bounce</p>
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#f39c12] leading-tight">
+                The Royal Punjabi Thali – A Complete Feast for the Family.
+            </h2>
+            <p class="text-gray-400 text-lg">
+                A rich combo of rich premium subjis, buttery rotis, dal, aromatic rice, and sweet gulab jamun that bounces with flavor!
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. BOTTOM LAYOUT: REAL MENU GRID & INTEGRATIONS -->
+    <section id="menu" class="relative bg-[#171717] py-20 px-6 md:px-20 z-30 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto space-y-16">
+            
+            <!-- Category Tabs / Section Header -->
+            <div class="text-center space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold font-serif text-[#f39c12]">Our Signature Menu</h2>
+                <div class="flex justify-center space-x-4 pt-4">
+                    <span class="px-4 py-2 bg-[#e67e22] text-white text-xs font-bold rounded-full uppercase">Bombay Chat</span>
+                    <span class="px-4 py-2 bg-gray-800 text-gray-400 text-xs font-bold rounded-full uppercase">Punjabi</span>
+                    <span class="px-4 py-2 bg-gray-800 text-gray-400 text-xs font-bold rounded-full uppercase">South Indian</span>
+                </div>
+            </div>
+
+            <!-- Menu Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
+                    <img src="images/menu_chat.jpg" alt="Bombay Chat" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-lg text-white">Bombay Chat Pat</h4>
+                        <span class="text-[#e67e22] font-bold">₹120</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Spicy, tangy, and premium street flavors directly from Mumbai classics.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
+                    <img src="images/menu_punjabi.jpg" alt="Punjabi Thali" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-lg text-white">Punjabi Thali</h4>
+                        <span class="text-[#e67e22] font-bold">₹280</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Rich tandoor subjis served with extra butter rotis and dal makhani.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
+                    <img src="images/menu_dosa.jpg" alt="South Indian" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <h4 class="font-bold text-lg text-white">South Indian</h4>
+                        <span class="text-[#e67e22] font-bold">₹180</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">Crispy dosa made in pure Amul butter, with authentic sambhar.</p>
+                </div>
+            </div>
+
+            <!-- Online Delivery & Live Table Booking Widgets -->
+            <div id="reservations" class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 items-start">
                 
-                <!-- Card Item 1 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Special Pizza">
+                <!-- Left: Order Online Buttons & Elfsight Placeholder -->
+                <div class="bg-[#1a1a1a] p-8 rounded-2xl border border-gray-800 space-y-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <span>📅</span> Live Table Booking (Elfsight Widget)
+                    </h3>
+                    
+                    <!-- Dummy Live Form UI acting as Elfsight responsive widget -->
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="First Name" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
+                            <input type="text" placeholder="Last Name" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
                         </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Kamdhenu Special Pizza</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹310</span>
+                        <input type="email" placeholder="Email Address" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
+                        <button type="button" class="w-full bg-gray-800 text-gray-400 text-xs font-bold py-3 rounded uppercase tracking-wider cursor-not-allowed">Powered by Elfsight Widget</button>
+                    </form>
+
+                    <hr class="border-gray-800 my-6">
+
+                    <!-- Delivery CTA -->
+                    <div class="space-y-3">
+                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Order Instantly Via</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="bg-[#cb202d] text-white py-3 rounded-xl text-center font-bold text-sm hover:opacity-90 transition">Zomato</a>
+                            <a href="#" class="bg-[#fc8019] text-white py-3 rounded-xl text-center font-bold text-sm hover:opacity-90 transition">Swiggy</a>
                         </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Fresh hand-tossed base topped with premium mozzarella cheese, capsicum, sweet corn, crisp onions, and soft paneer cubes.</p>
                     </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
                 </div>
 
-                <!-- Card Item 2 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Paneer Tikka">
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Premium Paneer Tikka</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹240</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Spicy clay-oven roasted malai paneer cubes marinated in high-grade rich tandoori curd spices along with grilled veggies.</p>
+                <!-- Right: Location Map Integration -->
+                <div id="location" class="w-full h-full min-h-[350px] bg-[#1a1a1a] p-4 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold text-white mb-1">📍 Visit Our Sargasan Branch</h3>
+                        <p class="text-gray-400 text-sm">Palm Road, behind Swagat Holiday Mall, Sargasan, Gandhinagar</p>
                     </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
-                </div>
-
-                <!-- Card Item 3 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Veg Burger">
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Veggie Supreme Burger</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹120</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Crispy handcrafted vegetable patty stacked with creamy cheese slice, freshly cut lettuce, raw tomato slices, and chipotle garlic sauce.</p>
+                    <!-- Google Maps Embed Code for exact tracking -->
+                    <div class="w-full h-64 rounded-xl overflow-hidden shadow-inner">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.6322301389823!2d72.6247363!3d23.1836371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c10a47567%3A0x6b107e3a968fd1ab!2sHonest%20Restaurant%20Sargasan!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                            class="w-full h-full border-0 grayscale invert brightness-90 contrast-100" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe >
                     </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
                 </div>
 
             </div>
         </div>
-
-        <!-- Segment B: Main Dinner Course -->
-        <div>
-            <h3 class="text-lg font-bold border-l-4 border-amber-500 pl-4 mb-8 text-amber-100 tracking-wider uppercase">Royal Main Course</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Card Item 4 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Shahi Paneer">
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Shahi Paneer Masala</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹290</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Soft premium cottage cheese cubes simmered down inside a luxury golden sweet cashew aromatic cream gravy gravy paste.</p>
-                    </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
-                </div>
-
-                <!-- Card Item 5 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Dal Makhani">
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Dal Makhani Feast</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹250</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Authentic black urad lentils slow charcoal cooked for 12 hours loaded down with dairy butter blocks and milk fresh cream layers.</p>
-                    </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
-                </div>
-
-                <!-- Card Item 6 -->
-                <div class="bg-zinc-900/30 border border-zinc-800/80 p-5 rounded-3xl hover:border-amber-500/40 transition-all duration-300 group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-44 bg-zinc-800 rounded-2xl mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover group-hover:scale-103 transition duration-500" alt="Sizzler">
-                        </div>
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-bold text-white">Premium Veg Sizzler</h4>
-                            <span class="text-amber-500 font-bold text-lg">₹380</span>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-4 leading-relaxed">Steaming sizzling iron platter arranged with tandoori grilled vegetables, herb potato fries, basmati rice pellets and spicy brown gravy.</p>
-                    </div>
-                    <button class="w-full bg-zinc-800/80 hover:bg-amber-500 hover:text-black text-gray-300 font-bold text-xs py-3 px-4 rounded-xl transition-all uppercase tracking-wider">Add To Order</button>
-                </div>
-
-            </div>
-        </div>
     </section>
 
-    <!-- FOOTER SYSTEMS LAYER -->
-    <footer class="py-12 border-t border-zinc-900 bg-zinc-950/40 text-center relative z-10">
-        <h3 class="text-md font-bold text-amber-500 mb-2 luxury-heading tracking-widest">KAMDHENU RESTAURANT</h3>
-        <p class="text-[11px] text-gray-500 px-6 max-w-md mx-auto leading-relaxed">Near D-Mart, FP-175, TP-7, Sargasan, Gandhinagar, Gujarat 382419</p>
-        <div class="w-12 h-[1px] bg-amber-500/30 mx-auto my-4"></div>
-        <p class="text-[9px] text-gray-600 tracking-widest uppercase">© 2026 Developed by Next-Gen AI Technical Partner. All Rights Reserved.</p>
+    <!-- FOOTER -->
+    <footer class="bg-[#0f0f0f] text-center py-6 text-xs text-gray-600 border-t border-gray-900 z-30 relative">
+        &copy; 2026 Honest Sargasan Demo Concept. Designed beautifully for Premium 3D Portfolio.
     </footer>
 
-    <!-- 3. REAL-TIME MATHEMATICAL 3D ORBIT TRACK SCRIPT -->
+    <!-- 6. GSAP JAVASCRIPT FOR 3D TRANSITION AND SCROLL EFFECTS -->
     <script>
-        // Exact Horizontal Orbit Spread (rx) and Perspective Flattening Flatten Height Factor (ry)
-        const rx1 = 170, ry1 = 35; // Inner Loop for Burger Node
-        const rx2 = 230, ry2 = 48; // Outer Loop for Paneer & Roti Node
+        // Registering ScrollTrigger Plugin
+        gsap.registerPlugin(ScrollTrigger);
 
-        // Auto Anchored Graphic Center Calculations Based On Render Container
-        const cx = 250, cy = 225;
+        const foodImg = document.getElementById("hero-food");
 
-        let trackingAngle = 0;
+        // Images paths array for smooth transition trick on scroll
+        const foodAssets = {
+            stage1: "images/bhaji_pav.png",    // Main centerpiece
+            stage2: "images/mysore_dosa.png",  // Smooth scroll item 1
+            stage3: "images/punjabi_thali.png" // Bounce item 2
+        };
 
-        function runCosmicEngine() {
-            // Adjust loop value to control speed smoothly
-            trackingAngle += 0.006;
+        // --- STAGE 1 to STAGE 2 TRANSITION ---
+        gsap.to(foodImg, {
+            scrollTrigger: {
+                trigger: "#scroll-stage-2",
+                start: "top bottom", // Jaise hi section screen me aana shuru ho
+                end: "top center",
+                scrub: 1, // Smooth connection with user's scrollbar
+                onEnter: () => {
+                    // Smoothly change asset path to Dosa
+                    foodImg.src = foodAssets.stage2;
+                },
+                onLeaveBack: () => {
+                    // User wapas upar jaye toh Pav Bhaji wapas aa jaye
+                    foodImg.src = foodAssets.stage1;
+                }
+            },
+            rotation: 180, // Plate ghoomte hue left pe shift hogi
+            scale: 0.85,
+            x: -40, 
+            duration: 1.5
+        });
 
-            // ----------------------------------------------------
-            // NODE 1: BURGER NODE (Inner Track Axis)
-            // ----------------------------------------------------
-            const bCos = Math.cos(trackingAngle);
-            const bSin = Math.sin(trackingAngle);
-            
-            const bX = cx + rx1 * bCos - 40;
-            const bY = cy + ry1 * bSin - 40;
-            
-            // Scaler Multiplier & Layering calculations using Sin Wave depth variables
-            const bScale = 0.65 + (bSin + 1) * 0.22; // Downscale to 0.65 inside background, Upscale to 1.1 inside front foreground
-            const bZIndex = Math.round((bSin + 1) * 15) + 10; // Z-Index dynamically changes from 10 to 40 (Pizza is statically locked at 30!)
+        // --- STAGE 2 to STAGE 3 TRANSITION (The Bounce Effect) ---
+        gsap.to(foodImg, {
+            scrollTrigger: {
+                trigger: "#scroll-stage-3",
+                start: "top bottom",
+                end: "top center",
+                scrub: 1,
+                onEnter: () => {
+                    // Smoothly change asset path to Punjabi Thali
+                    foodImg.src = foodAssets.stage3;
+                },
+                onLeaveBack: () => {
+                    foodImg.src = foodAssets.stage2;
+                }
+            },
+            rotation: 360, // Phirse ghumao loop complete karne ke liye
+            y: -20, // Chhota sa vertical jump dynamically handle karne ke liye
+            scale: 1.05, // Loaded Punjabi thali thodi badi screen feel degi
+            x: 0, // Wapas text ke perfect side balance me
+            ease: "bounce.out", // Bouncing touch jaise video me bottle move karti hai
+            duration: 2
+        });
 
-            gsap.set("#burgerNode", {
-                x: bX,
-                y: bY,
-                scale: bScale,
-                zIndex: bZIndex
-            });
-
-            // ----------------------------------------------------
-            // NODE 2: PANEER NODE (Outer Track Axis - Placed Inverse 180 deg)
-            // ----------------------------------------------------
-            const pCos = Math.cos(trackingAngle + Math.PI);
-            const pSin = Math.sin(trackingAngle + Math.PI);
-            
-            const pX = cx + rx2 * pCos - 40;
-            const pY = cy + ry2 * pSin - 40;
-            
-            const pScale = 0.60 + (pSin + 1) * 0.22;
-            const pZIndex = Math.round((pSin + 1) * 15) + 10;
-
-            gsap.set("#paneerNode", {
-                x: pX,
-                y: pY,
-                scale: pScale,
-                zIndex: pZIndex
-            });
-
-            // ----------------------------------------------------
-            // NODE 3: ROTI NODE (Outer Track Axis - Offset 90 deg phase)
-            // ----------------------------------------------------
-            const rCos = Math.cos(trackingAngle + (Math.PI / 2));
-            const rSin = Math.sin(trackingAngle + (Math.PI / 2));
-            
-            const rX = cx + rx2 * rCos - 40;
-            const rY = cy + ry2 * rSin - 40;
-            
-            const rScale = 0.60 + (rSin + 1) * 0.22;
-            const rZIndex = Math.round((rSin + 1) * 15) + 10;
-
-            gsap.set("#rotiNode", {
-                x: rX,
-                y: rY,
-                scale: rScale,
-                zIndex: rZIndex
-            });
-
-            // Re-execute engine cycle loop safely
-            requestAnimationFrame(runCosmicEngine);
-        }
-
-        // Initialize Solar Engine on system start
-        window.addEventListener('DOMContentLoa
+        // --- FADE OUT WHEN MENU STARTS ---
+        // Jab user main functional buttons aur widgets ke paas pahuche, 3D element smoothly hide ho jaye
+        gsap.to(foodImg, {
+            scrollTrigger: {
+                trigger: "#menu",
+                start: "top bottom",
+                end: "top center",
+                scrub: true
+            },
+            opacity: 0,
+            scale: 0.5
+        });
+    </script>
+</body>
+                            </html>
+                            
