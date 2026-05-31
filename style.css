@@ -1,1 +1,47 @@
+        /* UNREAL LUXURY BACKGROUND SYSTEM */
+        body {
+            background: radial-gradient(circle at 50% 30%, #1c1912 0%, #0c0b08 60%, #050504 100%);
+            color: #f4f4f0;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
 
+        /* Ambient Cosmic Light Behind Pizza */
+        .universe::before {
+            content: '';
+            position: absolute;
+            width: 380px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.18) 0%, transparent 75%);
+            filter: blur(40px);
+            z-index: 1;
+            transform: rotateX(60deg);
+        }
+
+        /* Luxury Glowing Rings on Background */
+        .universe::after {
+            content: '';
+            position: absolute;
+            width: 620px;
+            height: 620px;
+            border: 1px solid rgba(245, 158, 11, 0.08);
+            border-radius: 50%;
+            transform: rotateX(60deg);
+            z-index: 0;
+            box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.03);
+        }
+
+        /* Gold Dust / Premium Shimmer Effect */
+        .gold-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(rgba(245, 158, 11, 0.06) 1.5px, transparent 0),
+                radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+            background-size: 40px 40px, 90px 90px;
+            background-position: 0 0, 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
