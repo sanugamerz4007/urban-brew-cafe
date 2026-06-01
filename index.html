@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honest Restaurant - Sargasan</title>
-    <!-- Fonts Google se link kiye hain premium look ke liye -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,12 +16,13 @@
             box-sizing: border-box;
             font-family: 'Plus Jakarta Sans', sans-serif;
             -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #FDFBF7; /* Creamish premium background */
+            background-color: #FDFBF7;
             color: #1A1A1A;
-            padding-bottom: 80px; /* Nav bar ke liye space */
+            padding-bottom: 90px;
         }
 
         /* --- HEADER & NAVIGATION --- */
@@ -59,7 +59,7 @@
         .brand-name {
             font-size: 24px;
             font-weight: 800;
-            color: #A61D24; /* Authentic Red */
+            color: #A61D24;
             letter-spacing: -0.5px;
         }
 
@@ -71,7 +71,7 @@
             margin-top: -2px;
         }
 
-        /* --- HERO BANNER (1000091812.jpg) --- */
+        /* --- HERO BANNER --- */
         .hero {
             padding: 40px 24px;
             text-align: center;
@@ -91,7 +91,6 @@
             color: #555451;
             line-height: 1.6;
             margin-bottom: 30px;
-            padding: 0 5px;
         }
 
         /* BUTTONS */
@@ -108,6 +107,7 @@
             margin-bottom: 12px;
             box-shadow: 0 4px 12px rgba(166, 29, 36, 0.2);
             border: none;
+            cursor: pointer;
         }
 
         .btn-secondary {
@@ -121,9 +121,10 @@
             font-weight: 600;
             font-size: 15px;
             border: 1.5px solid #1A1A1A;
+            text-align: center;
         }
 
-        /* --- OUR PROMISE SECTION (1000091813.jpg) --- */
+        /* --- OUR PROMISE SECTION --- */
         .section-promise {
             padding: 30px 24px;
             text-align: center;
@@ -153,7 +154,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- FAMILY SPECIAL & CARD (1000091815.jpg & 1000091816.jpg) --- */
+        /* --- FAMILY SPECIAL --- */
         .family-card {
             background-color: #F8F3EA;
             margin: 20px 24px;
@@ -218,7 +219,7 @@
             object-fit: cover;
         }
 
-        /* --- SIGNATURE DISHES SLIDER (1000091817.jpg to 1000091819.jpg) --- */
+        /* --- SIGNATURE DISHES SLIDER --- */
         .signature-section {
             padding: 30px 0 30px 24px;
         }
@@ -235,18 +236,17 @@
             margin-bottom: 20px;
         }
 
-        /* Horizontal Scroll Area */
         .dish-slider {
             display: flex;
             overflow-x: auto;
             gap: 16px;
             padding-bottom: 15px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            scrollbar-width: none;
         }
 
         .dish-slider::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome/Safari */
+            display: none;
         }
 
         .dish-card {
@@ -322,9 +322,15 @@
             font-size: 13px;
             cursor: pointer;
             background-color: #FFFBFB;
+            transition: 0.2s;
         }
 
-        /* --- EXPLORE FRESH MENU & ACCOMPANIMENTS (1000091820.jpg to 1000091821.jpg) --- */
+        .btn-add:active {
+            background-color: #A61D24;
+            color: white;
+        }
+
+        /* --- EXPLORE FRESH MENU --- */
         .menu-directory-section {
             padding: 20px 24px;
         }
@@ -368,6 +374,7 @@
             font-weight: 600;
             border: 1px solid #EAE5DC;
             background-color: #FFFFFF;
+            cursor: pointer;
         }
 
         .tab.active {
@@ -376,7 +383,6 @@
             border-color: #A61D24;
         }
 
-        /* Accompaniments Sheet List */
         .accompaniments-box {
             margin-top: 25px;
             background: #FFFFFF;
@@ -416,7 +422,7 @@
             font-size: 14px;
         }
 
-        /* --- LOCATION & HOURS (1000091823.jpg) --- */
+        /* --- LOCATION & HOURS --- */
         .location-section {
             margin: 20px 24px;
             background-color: #FFFFFF;
@@ -462,6 +468,7 @@
             overflow: hidden;
             position: relative;
             margin-top: 10px;
+            border: 1px solid #EAE5DC;
         }
 
         .map-box img {
@@ -487,7 +494,7 @@
             gap: 6px;
         }
 
-        /* --- FIXED BOTTOM NAVIGATION BAR --- */
+        /* --- BOTTOM NAVIGATION BAR --- */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -496,10 +503,10 @@
             background-color: #FFFFFF;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
+            padding: 12px 0;
             border-top: 1px solid #EAE5DC;
             z-index: 200;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
         }
 
         .nav-item {
@@ -512,6 +519,10 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 25%;
         }
 
         .nav-item.active {
@@ -520,7 +531,7 @@
         }
 
         .nav-icon {
-            font-size: 18px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -528,7 +539,7 @@
 
     <!-- 1. HEADER SECTION -->
     <header>
-        <div class="menu-icon">
+        <div class="menu-icon" onclick="alert('Menu sidebar coming soon!')">
             <span></span>
             <span></span>
             <span></span>
@@ -537,103 +548,107 @@
             <div class="brand-name">Sarghasan</div>
             <div class="est-tag">Est. 1975</div>
         </div>
-        <div style="width: 22px;"></div> <!-- Spacing balance -->
+        <div style="width: 22px;"></div>
     </header>
 
-    <!-- 2. HERO BANNER SECTION (1000091812.jpg) -->
-    <section class="hero">
-        <h1>Honest Quality.<br>Legendary Taste.<br>Since 1975.</h1>
-        <p>Savor our iconic Pav Bhaji cooked in Amul Butter, Ghee-tempered Punjabi Thalis, and fresh South Indian crepes right here in Sargasan, Gandhinagar.</p>
-        <button class="btn-primary" onclick="alert('Opening Menu...')">View Menu</button>
-        <a href="#location" class="btn-secondary">Locate Us</a>
-    </section>
+    <!-- MAIN SECTIONS WRAPPER FOR SCROLLING -->
+    <div id="home-section">
+        <!-- 2. HERO BANNER SECTION -->
+        <section class="hero">
+            <h1>Honest Quality.<br>Legendary Taste.<br>Since 1975.</h1>
+            <p>Savor our iconic Pav Bhaji cooked in Amul Butter, Ghee-tempered Punjabi Thalis, and fresh South Indian crepes right here in Sargasan, Gandhinagar.</p>
+            <button class="btn-primary" onclick="scrollToSection('menu-section')">View Menu</button>
+            <button class="btn-secondary" onclick="scrollToSection('location-section')">Locate Us</button>
+        </section>
 
-    <!-- 3. OUR PROMISE SECTION (1000091813.jpg) -->
-    <section class="section-promise">
-        <div class="circle-image-container">
-            <!-- replace 'promise-pavbhaji.jpg' with your image path -->
-            <img src="promise-pavbhaji.jpg" alt="Delicious Pav Bhaji Splendor">
-        </div>
-        <h2 class="section-title">Our Promise</h2>
-    </section>
+        <!-- 3. OUR PROMISE SECTION -->
+        <section class="section-promise">
+            <div class="circle-image-container">
+                <!-- Premium dynamic image link loaded directly -->
+                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=500&q=80" alt="Delicious Pav Bhaji Splendor">
+            </div>
+            <h2 class="section-title">Our Promise</h2>
+        </section>
 
-    <!-- 4. FAMILY SPECIAL CARD (1000091815.jpg & 1000091816.jpg) -->
-    <section class="family-card">
-        <div class="tag-badge">Family Dining</div>
-        <h2>Family Special</h2>
-        <p>Always offers all-you-can-eat buffet options! Gather your loved ones for an unlimited feast of our finest preparations.</p>
-        <a href="#" class="link-more">Learn More ➔</a>
-        <div class="rect-image-container">
-            <!-- replace 'buffet.jpg' with your image path -->
-            <img src="buffet.jpg" alt="Rich Indian Feast Table Setup">
-        </div>
-    </section>
+        <!-- 4. FAMILY SPECIAL CARD -->
+        <section class="family-card" id="heritage-section">
+            <div class="tag-badge">Family Dining</div>
+            <h2>Family Special</h2>
+            <p>Always offers all-you-can-eat buffet options! Gather your loved ones for an unlimited feast of our finest preparations.</p>
+            <a href="#" class="link-more" onclick="alert('Buffet details coming soon!'); return false;">Learn More ➔</a>
+            <div class="rect-image-container">
+                <img src="https://images.unsplash.com/photo-1547928500-30694e5e40c6?auto=format&fit=crop&w=600&q=80" alt="Rich Indian Feast Table Setup">
+            </div>
+        </section>
+    </div>
 
-    <!-- 5. SIGNATURE DISHES SLIDER (1000091817.jpg to 1000091819.jpg) -->
-    <section class="signature-section">
-        <h2>Signature Dishes</h2>
-        <div class="sub-tagline">The flavors that built our legacy.</div>
-        
-        <div class="dish-slider">
-            <!-- Dish Card 1 -->
-            <div class="dish-card">
-                <div class="dish-img-box">
-                    <img src="bhajipav.jpg" alt="Legendary Butter Bhaji Pav">
-                    <div class="bestseller-badge">Bestseller</div>
+    <!-- 5. SIGNATURE DISHES SLIDER & MENU DIRECTORY -->
+    <div id="menu-section">
+        <section class="signature-section">
+            <h2>Signature Dishes</h2>
+            <div class="sub-tagline">The flavors that built our legacy.</div>
+            
+            <div class="dish-slider">
+                <!-- Dish Card 1 -->
+                <div class="dish-card">
+                    <div class="dish-img-box">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80" alt="Legendary Butter Bhaji Pav">
+                        <div class="bestseller-badge">Bestseller</div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Butter Bhaji Pav <span class="price">₹255</span></h3>
+                        <div class="dish-desc">Our iconic recipe, mashed vegetables simmered in signature spices and loaded with Amul butter.</div>
+                        <button class="btn-add" onclick="alert('Added Butter Bhaji Pav to order!')">Add to Order</button>
+                    </div>
                 </div>
-                <div class="dish-info">
-                    <h3>Legendary Butter Bhaji Pav <span class="price">₹255</span></h3>
-                    <div class="dish-desc">Our iconic recipe, mashed vegetables simmered in signature spices and loaded with Amul butter.</div>
-                    <button class="btn-add">Add to Order</button>
+
+                <!-- Dish Card 2 -->
+                <div class="dish-card">
+                    <div class="dish-img-box">
+                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=500&q=80" alt="Paneer Bhurji Dosa">
+                        <div class="bestseller-badge" style="background-color: #EBF7ED; color: #1E6B29;">Chef's Pick</div>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Paneer Bhurji Dosa <span class="price">₹250</span></h3>
+                        <div class="dish-desc">Crispy South Indian crepe generously filled with spiced, scrambled cottage cheese and onions.</div>
+                        <button class="btn-add" onclick="alert('Added Paneer Bhurji Dosa to order!')">Add to Order</button>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Dish Card 2 -->
-            <div class="dish-card">
-                <div class="dish-img-box">
-                    <img src="dosa.jpg" alt="Paneer Bhurji Dosa">
-                    <div class="bestseller-badge" style="background-color: #EBF7ED; color: #1E6B29;">Chef's Pick</div>
+        <!-- 6. EXPLORE FRESH MENU SECTION -->
+        <section class="menu-directory-section">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 15px;">Explore Our Fresh Menu</h2>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search for dishes..." oninput="searchDish(this.value)">
+            </div>
+
+            <div class="filter-tabs">
+                <div class="tab active" onclick="changeTab(this)">Signature Pav Bhaji</div>
+                <div class="tab" onclick="changeTab(this)">Tawa Pulav & Rice</div>
+                <div class="tab" onclick="changeTab(this)">South Indian</div>
+            </div>
+
+            <!-- Accompaniments -->
+            <div class="accompaniments-box">
+                <h4>Accompaniments</h4>
+                <div class="acc-item">
+                    <div class="acc-name">Extra Butter Pav (2 pcs)</div>
+                    <div class="acc-price">₹40</div>
                 </div>
-                <div class="dish-info">
-                    <h3>Paneer Bhurji Dosa <span class="price">₹250</span></h3>
-                    <div class="dish-desc">Crispy South Indian crepe generously filled with spiced, scrambled cottage cheese and onions.</div>
-                    <button class="btn-add">Add to Order</button>
+                <div class="acc-item">
+                    <div class="acc-name">Masala Papad</div>
+                    <div class="acc-price">₹65</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- 6. EXPLORE FRESH MENU SECTION (1000091820.jpg & 1000091821.jpg) -->
-    <section class="menu-directory-section">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 15px;">Explore Our Fresh Menu</h2>
-        
-        <div class="search-container">
-            <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" placeholder="Search for dishes...">
-        </div>
-
-        <div class="filter-tabs">
-            <div class="tab active">Signature Pav Bhaji</div>
-            <div class="tab">Tawa Pulav & Rice</div>
-            <div class="tab">South Indian</div>
-        </div>
-
-        <!-- Accompaniments Sheet Layout -->
-        <div class="accompaniments-box">
-            <h4>Accompaniments</h4>
-            <div class="acc-item">
-                <div class="acc-name">Extra Butter Pav (2 pcs)</div>
-                <div class="acc-price">₹40</div>
-            </div>
-            <div class="acc-item">
-                <div class="acc-name">Masala Papad</div>
-                <div class="acc-price">₹65</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. LOCATION & HOURS SECTION (1000091823.jpg) -->
-    <section class="location-section" id="location">
+    <!-- 7. LOCATION & HOURS SECTION -->
+    <section class="location-section" id="location-section">
         <h2>Location & Hours</h2>
         
         <div class="info-row">
@@ -660,26 +675,4 @@
         </div>
 
         <div class="map-box">
-            <!-- Map snapshot setup wrapper -->
-            <img src="map-placeholder.jpg" alt="Google Map Location Route Guide Screenshot">
-            <a href="https://maps.google.com" target="_blank" class="btn-directions">
-                <span style="color: #A61D24;">▲</span> Get Directions
-            </a>
-        </div>
-    </section>
-
-    <!-- 8. BOTTOM STICKY NAVIGATION BAR -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active">
-            <span class="nav-icon">🏠</span>
-            <span>Home</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">🍴</span>
-            <span>Menu</span>
-        </a>
-        <a href="#" class="nav-item">
-            <span class="nav-icon">📜</span>
-            <span>Heritage</span>
-        </a>
-        <a href="#locati
+            <!-- Simu
