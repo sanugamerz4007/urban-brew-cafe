@@ -3,277 +3,683 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honest Sargasan - Premium 3D Experience</title>
-    <!-- Tailwind CSS for modern layout -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- GSAP for Ultra Smooth 3D & Scroll Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <title>Honest Restaurant - Sargasan</title>
+    <!-- Fonts Google se link kiye hain premium look ke liye -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- GENERAL STYLES & RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+            background-color: #FDFBF7; /* Creamish premium background */
+            color: #1A1A1A;
+            padding-bottom: 80px; /* Nav bar ke liye space */
         }
-        /* Custom scrollbar to match the charcoal theme */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #FDFBF7;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #EAE5DC;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        ::-webkit-scrollbar-track {
-            background: #121212;
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #e67e22;
-            border-radius: 4px;
+
+        .menu-icon span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #1A1A1A;
         }
-        /* Ambient Tandoor Glow Behind 3D Items */
-        .glow-bg {
-            background: radial-gradient(circle, rgba(230,126,34,0.2) 0%, rgba(18,18,18,0) 60%);
+
+        .logo-container {
+            text-align: center;
+        }
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #A61D24; /* Authentic Red */
+            letter-spacing: -0.5px;
+        }
+
+        .est-tag {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #706F6C;
+            margin-top: -2px;
+        }
+
+        /* --- HERO BANNER (1000091812.jpg) --- */
+        .hero {
+            padding: 40px 24px;
+            text-align: center;
+            background: linear-gradient(180deg, #FDFBF7 0%, #F5EFE6 100%);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            color: #A61D24;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #555451;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 5px;
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            background-color: #A61D24;
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(166, 29, 36, 0.2);
+            border: none;
+        }
+
+        .btn-secondary {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            color: #1A1A1A;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1.5px solid #1A1A1A;
+        }
+
+        /* --- OUR PROMISE SECTION (1000091813.jpg) --- */
+        .section-promise {
+            padding: 30px 24px;
+            text-align: center;
+        }
+
+        .circle-image-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 30px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .circle-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 15px;
+        }
+
+        /* --- FAMILY SPECIAL & CARD (1000091815.jpg & 1000091816.jpg) --- */
+        .family-card {
+            background-color: #F8F3EA;
+            margin: 20px 24px;
+            padding: 24px;
+            border-radius: 24px;
+            border: 1px solid #EAE5DC;
+        }
+
+        .tag-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FFF6E0;
+            color: #B58A2A;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tag-badge::before {
+            content: "★";
+            margin-right: 5px;
+            font-size: 10px;
+        }
+
+        .family-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #1A1A1A;
+            margin-bottom: 15px;
+        }
+
+        .family-card p {
+            font-size: 14px;
+            color: #666562;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .link-more {
+            color: #A61D24;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .rect-image-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .rect-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- SIGNATURE DISHES SLIDER (1000091817.jpg to 1000091819.jpg) --- */
+        .signature-section {
+            padding: 30px 0 30px 24px;
+        }
+
+        .signature-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .sub-tagline {
+            font-size: 14px;
+            color: #777672;
+            margin-bottom: 20px;
+        }
+
+        /* Horizontal Scroll Area */
+        .dish-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px;
+            padding-bottom: 15px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+
+        .dish-slider::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+
+        .dish-card {
+            flex: 0 0 260px;
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            padding: 14px;
+            border: 1px solid #EAE5DC;
+            scroll-snap-align: start;
+        }
+
+        .dish-img-box {
+            position: relative;
+            width: 100%;
+            height: 150px;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .dish-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bestseller-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #FFD466;
+            color: #664600;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        .dish-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #A61D24;
+            font-weight: 700;
+        }
+
+        .dish-desc {
+            font-size: 12px;
+            color: #777672;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-add {
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid #CD6C71;
+            color: #A61D24;
+            padding: 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            background-color: #FFFBFB;
+        }
+
+        /* --- EXPLORE FRESH MENU & ACCOMPANIMENTS (1000091820.jpg to 1000091821.jpg) --- */
+        .menu-directory-section {
+            padding: 20px 24px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            border-radius: 12px;
+            border: 1px solid #EAE5DC;
+            background-color: #FFFFFF;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scrollbar-width: none;
+        }
+
+        .tab {
+            white-space: nowrap;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #EAE5DC;
+            background-color: #FFFFFF;
+        }
+
+        .tab.active {
+            background-color: #A61D24;
+            color: #FFFFFF;
+            border-color: #A61D24;
+        }
+
+        /* Accompaniments Sheet List */
+        .accompaniments-box {
+            margin-top: 25px;
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #EAE5DC;
+        }
+
+        .accompaniments-box h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #F5EFE6;
+            padding-bottom: 10px;
+        }
+
+        .acc-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #EAE5DC;
+        }
+
+        .acc-item:last-child {
+            border-bottom: none;
+        }
+
+        .acc-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .acc-price {
+            font-weight: 700;
+            color: #A61D24;
+            font-size: 14px;
+        }
+
+        /* --- LOCATION & HOURS (1000091823.jpg) --- */
+        .location-section {
+            margin: 20px 24px;
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid #EAE5DC;
+        }
+
+        .location-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            font-size: 18px;
+            color: #A61D24;
+            margin-top: 2px;
+        }
+
+        .info-text p {
+            font-size: 14px;
+            color: #1A1A1A;
+            line-height: 1.5;
+        }
+
+        .info-text span {
+            font-size: 13px;
+            color: #777672;
+        }
+
+        .map-box {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .map-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-directions {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* --- FIXED BOTTOM NAVIGATION BAR --- */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #EAE5DC;
+            z-index: 200;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.03);
+        }
+
+        .nav-item {
+            text-align: center;
+            text-decoration: none;
+            color: #777672;
+            font-size: 11px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-item.active {
+            color: #A61D24;
+            font-weight: 600;
+        }
+
+        .nav-icon {
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-[#1a1a1a]/80 backdrop-blur-md px-8 py-4 flex justify-between items-center border-b border-gray-800">
-        <div class="text-2xl font-bold text-[#e67e22] tracking-wider">HONEST</div>
-        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-medium text-gray-300">
-            <a href="#menu" class="hover:text-[#e67e22] transition">Menu</a>
-            <a href="#reservations" class="hover:text-[#e67e22] transition">Reservations</a>
-            <a href="#location" class="hover:text-[#e67e22] transition">Location</a>
+    <!-- 1. HEADER SECTION -->
+    <header>
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <button class="bg-[#e67e22] text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:bg-[#d35400] transition uppercase text-xs tracking-wider">
-            Order Online
-        </button>
-    </nav>
+        <div class="logo-container">
+            <div class="brand-name">Sarghasan</div>
+            <div class="est-tag">Est. 1975</div>
+        </div>
+        <div style="width: 22px;"></div> <!-- Spacing balance -->
+    </header>
 
-    <!-- 3D FLOATING ANIMATED CANVAS (Yeh element scroll ke sath screen par hi tikega aur ghumega) -->
-    <div class="fixed top-0 right-0 w-full md:w-1/2 h-screen z-20 pointer-events-none flex justify-center items-center overflow-hidden">
-        <div class="absolute w-[400px] h-[400px] glow-bg rounded-full dynamic-glow"></div>
+    <!-- 2. HERO BANNER SECTION (1000091812.jpg) -->
+    <section class="hero">
+        <h1>Honest Quality.<br>Legendary Taste.<br>Since 1975.</h1>
+        <p>Savor our iconic Pav Bhaji cooked in Amul Butter, Ghee-tempered Punjabi Thalis, and fresh South Indian crepes right here in Sargasan, Gandhinagar.</p>
+        <button class="btn-primary" onclick="alert('Opening Menu...')">View Menu</button>
+        <a href="#location" class="btn-secondary">Locate Us</a>
+    </section>
+
+    <!-- 3. OUR PROMISE SECTION (1000091813.jpg) -->
+    <section class="section-promise">
+        <div class="circle-image-container">
+            <!-- replace 'promise-pavbhaji.jpg' with your image path -->
+            <img src="promise-pavbhaji.jpg" alt="Delicious Pav Bhaji Splendor">
+        </div>
+        <h2 class="section-title">Our Promise</h2>
+    </section>
+
+    <!-- 4. FAMILY SPECIAL CARD (1000091815.jpg & 1000091816.jpg) -->
+    <section class="family-card">
+        <div class="tag-badge">Family Dining</div>
+        <h2>Family Special</h2>
+        <p>Always offers all-you-can-eat buffet options! Gather your loved ones for an unlimited feast of our finest preparations.</p>
+        <a href="#" class="link-more">Learn More ➔</a>
+        <div class="rect-image-container">
+            <!-- replace 'buffet.jpg' with your image path -->
+            <img src="buffet.jpg" alt="Rich Indian Feast Table Setup">
+        </div>
+    </section>
+
+    <!-- 5. SIGNATURE DISHES SLIDER (1000091817.jpg to 1000091819.jpg) -->
+    <section class="signature-section">
+        <h2>Signature Dishes</h2>
+        <div class="sub-tagline">The flavors that built our legacy.</div>
         
-        <!-- Main 3D Hero Items (PNGs) -->
-        <img id="hero-food" src="images/bhaji_pav.png" alt="Butter Pav Bhaji" class="absolute w-[380px] object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.6)]">
-    </div>
+        <div class="dish-slider">
+            <!-- Dish Card 1 -->
+            <div class="dish-card">
+                <div class="dish-img-box">
+                    <img src="bhajipav.jpg" alt="Legendary Butter Bhaji Pav">
+                    <div class="bestseller-badge">Bestseller</div>
+                </div>
+                <div class="dish-info">
+                    <h3>Legendary Butter Bhaji Pav <span class="price">₹255</span></h3>
+                    <div class="dish-desc">Our iconic recipe, mashed vegetables simmered in signature spices and loaded with Amul butter.</div>
+                    <button class="btn-add">Add to Order</button>
+                </div>
+            </div>
 
-    <!-- 2. STAGE 1: THE WARM SWAGAT (Hero Section) -->
-    <section class="relative min-h-screen flex items-center px-6 md:px-20 z-10">
-        <div class="max-w-xl space-y-6">
-            <p class="text-[#e67e22] text-xs font-bold uppercase tracking-widest">The Warm Swagat</p>
-            <h1 class="text-4xl md:text-6xl font-serif font-bold text-[#f39c12] leading-tight">
-                Honest Sargasan - Serving Legacies of Taste since 1975
-            </h1>
-            <p class="text-gray-400 text-lg">
-                Experience the magic of authentic flavors prepared in pure Amul Butter, crafted to perfection.
-            </p>
-            <a href="#menu" class="inline-block bg-gradient-to-r from-[#f39c12] to-[#e67e22] text-black font-bold px-8 py-3 rounded-md shadow-lg hover:opacity-90 transition">
-                View Full Menu
+            <!-- Dish Card 2 -->
+            <div class="dish-card">
+                <div class="dish-img-box">
+                    <img src="dosa.jpg" alt="Paneer Bhurji Dosa">
+                    <div class="bestseller-badge" style="background-color: #EBF7ED; color: #1E6B29;">Chef's Pick</div>
+                </div>
+                <div class="dish-info">
+                    <h3>Paneer Bhurji Dosa <span class="price">₹250</span></h3>
+                    <div class="dish-desc">Crispy South Indian crepe generously filled with spiced, scrambled cottage cheese and onions.</div>
+                    <button class="btn-add">Add to Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. EXPLORE FRESH MENU SECTION (1000091820.jpg & 1000091821.jpg) -->
+    <section class="menu-directory-section">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 15px;">Explore Our Fresh Menu</h2>
+        
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search for dishes...">
+        </div>
+
+        <div class="filter-tabs">
+            <div class="tab active">Signature Pav Bhaji</div>
+            <div class="tab">Tawa Pulav & Rice</div>
+            <div class="tab">South Indian</div>
+        </div>
+
+        <!-- Accompaniments Sheet Layout -->
+        <div class="accompaniments-box">
+            <h4>Accompaniments</h4>
+            <div class="acc-item">
+                <div class="acc-name">Extra Butter Pav (2 pcs)</div>
+                <div class="acc-price">₹40</div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-name">Masala Papad</div>
+                <div class="acc-price">₹65</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. LOCATION & HOURS SECTION (1000091823.jpg) -->
+    <section class="location-section" id="location">
+        <h2>Location & Hours</h2>
+        
+        <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+                <p><strong>The Samved Dreams, Sargasan</strong></p>
+                <span>Behind Swagat Holiday Mall, near Sargasan Circle, Gandhinagar, Gujarat.</span>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+                <p><strong>+91 89800 07210</strong></p>
+            </div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">🕒</div>
+            <div class="info-text">
+                <p><strong>11:30 AM - 10:30 PM</strong></p>
+                <span>Open all days</span>
+            </div>
+        </div>
+
+        <div class="map-box">
+            <!-- Map snapshot setup wrapper -->
+            <img src="map-placeholder.jpg" alt="Google Map Location Route Guide Screenshot">
+            <a href="https://maps.google.com" target="_blank" class="btn-directions">
+                <span style="color: #A61D24;">▲</span> Get Directions
             </a>
         </div>
     </section>
 
-    <!-- 3. STAGE 2: THE SOUTH INDIAN TRANSITION -->
-    <section id="scroll-stage-2" class="relative min-h-screen flex items-center px-6 md:px-20 z-10 bg-[#161d16]/30">
-        <div class="max-w-xl space-y-6">
-            <p class="text-green-500 text-xs font-bold uppercase tracking-widest">The South Indian Transition</p>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white leading-tight">
-                Authentic South Indian Flavors – Prepared in Pure Amul Butter.
-            </h2>
-            <p class="text-gray-400 text-lg">
-                Taste the crispiness of our legendary Mysore Masala Dosa served with steaming hot sambhar and fresh coconut chutney.
-            </p>
-        </div>
-    </section>
-
-    <!-- 4. STAGE 3: THE PUNJABI FEAST & BOUNCE -->
-    <section id="scroll-stage-3" class="relative min-h-screen flex items-center px-6 md:px-20 z-10">
-        <div class="max-w-xl space-y-6">
-            <p class="text-[#e67e22] text-xs font-bold uppercase tracking-widest">The Punjabi Feast & Bounce</p>
-            <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#f39c12] leading-tight">
-                The Royal Punjabi Thali – A Complete Feast for the Family.
-            </h2>
-            <p class="text-gray-400 text-lg">
-                A rich combo of rich premium subjis, buttery rotis, dal, aromatic rice, and sweet gulab jamun that bounces with flavor!
-            </p>
-        </div>
-    </section>
-
-    <!-- 5. BOTTOM LAYOUT: REAL MENU GRID & INTEGRATIONS -->
-    <section id="menu" class="relative bg-[#171717] py-20 px-6 md:px-20 z-30 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto space-y-16">
-            
-            <!-- Category Tabs / Section Header -->
-            <div class="text-center space-y-4">
-                <h2 class="text-3xl md:text-4xl font-bold font-serif text-[#f39c12]">Our Signature Menu</h2>
-                <div class="flex justify-center space-x-4 pt-4">
-                    <span class="px-4 py-2 bg-[#e67e22] text-white text-xs font-bold rounded-full uppercase">Bombay Chat</span>
-                    <span class="px-4 py-2 bg-gray-800 text-gray-400 text-xs font-bold rounded-full uppercase">Punjabi</span>
-                    <span class="px-4 py-2 bg-gray-800 text-gray-400 text-xs font-bold rounded-full uppercase">South Indian</span>
-                </div>
-            </div>
-
-            <!-- Menu Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
-                    <img src="images/menu_chat.jpg" alt="Bombay Chat" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold text-lg text-white">Bombay Chat Pat</h4>
-                        <span class="text-[#e67e22] font-bold">₹120</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">Spicy, tangy, and premium street flavors directly from Mumbai classics.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
-                    <img src="images/menu_punjabi.jpg" alt="Punjabi Thali" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold text-lg text-white">Punjabi Thali</h4>
-                        <span class="text-[#e67e22] font-bold">₹280</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">Rich tandoor subjis served with extra butter rotis and dal makhani.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bg-[#222] p-6 rounded-xl border border-gray-800 hover:border-[#e67e22] transition duration-300">
-                    <img src="images/menu_dosa.jpg" alt="South Indian" class="w-full h-48 object-cover rounded-lg mb-4">
-                    <div class="flex justify-between items-center mb-2">
-                        <h4 class="font-bold text-lg text-white">South Indian</h4>
-                        <span class="text-[#e67e22] font-bold">₹180</span>
-                    </div>
-                    <p class="text-gray-400 text-sm">Crispy dosa made in pure Amul butter, with authentic sambhar.</p>
-                </div>
-            </div>
-
-            <!-- Online Delivery & Live Table Booking Widgets -->
-            <div id="reservations" class="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 items-start">
-                
-                <!-- Left: Order Online Buttons & Elfsight Placeholder -->
-                <div class="bg-[#1a1a1a] p-8 rounded-2xl border border-gray-800 space-y-6">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                        <span>📅</span> Live Table Booking (Elfsight Widget)
-                    </h3>
-                    
-                    <!-- Dummy Live Form UI acting as Elfsight responsive widget -->
-                    <form class="space-y-4">
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="text" placeholder="First Name" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
-                            <input type="text" placeholder="Last Name" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
-                        </div>
-                        <input type="email" placeholder="Email Address" class="w-full bg-[#262626] border border-gray-700 rounded p-3 text-sm text-white focus:outline-none focus:border-[#e67e22]">
-                        <button type="button" class="w-full bg-gray-800 text-gray-400 text-xs font-bold py-3 rounded uppercase tracking-wider cursor-not-allowed">Powered by Elfsight Widget</button>
-                    </form>
-
-                    <hr class="border-gray-800 my-6">
-
-                    <!-- Delivery CTA -->
-                    <div class="space-y-3">
-                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-widest">Order Instantly Via</h4>
-                        <div class="grid grid-cols-2 gap-4">
-                            <a href="#" class="bg-[#cb202d] text-white py-3 rounded-xl text-center font-bold text-sm hover:opacity-90 transition">Zomato</a>
-                            <a href="#" class="bg-[#fc8019] text-white py-3 rounded-xl text-center font-bold text-sm hover:opacity-90 transition">Swiggy</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Location Map Integration -->
-                <div id="location" class="w-full h-full min-h-[350px] bg-[#1a1a1a] p-4 rounded-2xl border border-gray-800 flex flex-col justify-between">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-white mb-1">📍 Visit Our Sargasan Branch</h3>
-                        <p class="text-gray-400 text-sm">Palm Road, behind Swagat Holiday Mall, Sargasan, Gandhinagar</p>
-                    </div>
-                    <!-- Google Maps Embed Code for exact tracking -->
-                    <div class="w-full h-64 rounded-xl overflow-hidden shadow-inner">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.6322301389823!2d72.6247363!3d23.1836371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c10a47567%3A0x6b107e3a968fd1ab!2sHonest%20Restaurant%20Sargasan!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
-                            class="w-full h-full border-0 grayscale invert brightness-90 contrast-100" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe >
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-[#0f0f0f] text-center py-6 text-xs text-gray-600 border-t border-gray-900 z-30 relative">
-        &copy; 2026 Honest Sargasan Demo Concept. Designed beautifully for Premium 3D Portfolio.
-    </footer>
-
-    <!-- 6. GSAP JAVASCRIPT FOR 3D TRANSITION AND SCROLL EFFECTS -->
-    <script>
-        // Registering ScrollTrigger Plugin
-        gsap.registerPlugin(ScrollTrigger);
-
-        const foodImg = document.getElementById("hero-food");
-
-        // Images paths array for smooth transition trick on scroll
-        const foodAssets = {
-            stage1: "images/bhaji_pav.png",    // Main centerpiece
-            stage2: "images/mysore_dosa.png",  // Smooth scroll item 1
-            stage3: "images/punjabi_thali.png" // Bounce item 2
-        };
-
-        // --- STAGE 1 to STAGE 2 TRANSITION ---
-        gsap.to(foodImg, {
-            scrollTrigger: {
-                trigger: "#scroll-stage-2",
-                start: "top bottom", // Jaise hi section screen me aana shuru ho
-                end: "top center",
-                scrub: 1, // Smooth connection with user's scrollbar
-                onEnter: () => {
-                    // Smoothly change asset path to Dosa
-                    foodImg.src = foodAssets.stage2;
-                },
-                onLeaveBack: () => {
-                    // User wapas upar jaye toh Pav Bhaji wapas aa jaye
-                    foodImg.src = foodAssets.stage1;
-                }
-            },
-            rotation: 180, // Plate ghoomte hue left pe shift hogi
-            scale: 0.85,
-            x: -40, 
-            duration: 1.5
-        });
-
-        // --- STAGE 2 to STAGE 3 TRANSITION (The Bounce Effect) ---
-        gsap.to(foodImg, {
-            scrollTrigger: {
-                trigger: "#scroll-stage-3",
-                start: "top bottom",
-                end: "top center",
-                scrub: 1,
-                onEnter: () => {
-                    // Smoothly change asset path to Punjabi Thali
-                    foodImg.src = foodAssets.stage3;
-                },
-                onLeaveBack: () => {
-                    foodImg.src = foodAssets.stage2;
-                }
-            },
-            rotation: 360, // Phirse ghumao loop complete karne ke liye
-            y: -20, // Chhota sa vertical jump dynamically handle karne ke liye
-            scale: 1.05, // Loaded Punjabi thali thodi badi screen feel degi
-            x: 0, // Wapas text ke perfect side balance me
-            ease: "bounce.out", // Bouncing touch jaise video me bottle move karti hai
-            duration: 2
-        });
-
-        // --- FADE OUT WHEN MENU STARTS ---
-        // Jab user main functional buttons aur widgets ke paas pahuche, 3D element smoothly hide ho jaye
-        gsap.to(foodImg, {
-            scrollTrigger: {
-                trigger: "#menu",
-                start: "top bottom",
-                end: "top center",
-                scrub: true
-            },
-            opacity: 0,
-            scale: 0.5
-        });
-    </script>
-</body>
-                            </html>
-                            
+    <!-- 8. BOTTOM STICKY NAVIGATION BAR -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <span class="nav-icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">🍴</span>
+            <span>Menu</span>
+        </a>
+        <a href="#" class="nav-item">
+            <span class="nav-icon">📜</span>
+            <span>Heritage</span>
+        </a>
+        <a href="#locati
