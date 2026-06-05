@@ -2,677 +2,380 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honest Restaurant - Sargasan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- GENERAL STYLES & RESET --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #FDFBF7;
-            color: #1A1A1A;
-            padding-bottom: 90px;
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: #FDFBF7;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #EAE5DC;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .menu-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background-color: #1A1A1A;
-        }
-
-        .logo-container {
-            text-align: center;
-        }
-
-        .brand-name {
-            font-size: 24px;
-            font-weight: 800;
-            color: #A61D24;
-            letter-spacing: -0.5px;
-        }
-
-        .est-tag {
-            font-size: 9px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #706F6C;
-            margin-top: -2px;
-        }
-
-        /* --- HERO BANNER --- */
-        .hero {
-            padding: 40px 24px;
-            text-align: center;
-            background: linear-gradient(180deg, #FDFBF7 0%, #F5EFE6 100%);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 34px;
-            color: #A61D24;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 15px;
-            color: #555451;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* BUTTONS */
-        .btn-primary {
-            display: block;
-            width: 100%;
-            background-color: #A61D24;
-            color: #FFFFFF;
-            text-decoration: none;
-            padding: 16px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 15px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(166, 29, 36, 0.2);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-secondary {
-            display: block;
-            width: 100%;
-            background-color: transparent;
-            color: #1A1A1A;
-            text-decoration: none;
-            padding: 16px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 15px;
-            border: 1.5px solid #1A1A1A;
-            text-align: center;
-        }
-
-        /* --- OUR PROMISE SECTION --- */
-        .section-promise {
-            padding: 30px 24px;
-            text-align: center;
-        }
-
-        .circle-image-container {
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 30px auto;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid #FFFFFF;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        .circle-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 15px;
-        }
-
-        /* --- FAMILY SPECIAL --- */
-        .family-card {
-            background-color: #F8F3EA;
-            margin: 20px 24px;
-            padding: 24px;
-            border-radius: 24px;
-            border: 1px solid #EAE5DC;
-        }
-
-        .tag-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: #FFF6E0;
-            color: #B58A2A;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .tag-badge::before {
-            content: "★";
-            margin-right: 5px;
-            font-size: 10px;
-        }
-
-        .family-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            color: #1A1A1A;
-            margin-bottom: 15px;
-        }
-
-        .family-card p {
-            font-size: 14px;
-            color: #666562;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .link-more {
-            color: #A61D24;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 20px;
-        }
-
-        .rect-image-container {
-            width: 100%;
-            height: 220px;
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .rect-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* --- SIGNATURE DISHES SLIDER --- */
-        .signature-section {
-            padding: 30px 0 30px 24px;
-        }
-
-        .signature-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .sub-tagline {
-            font-size: 14px;
-            color: #777672;
-            margin-bottom: 20px;
-        }
-
-        .dish-slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 16px;
-            padding-bottom: 15px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-        }
-
-        .dish-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .dish-card {
-            flex: 0 0 260px;
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            padding: 14px;
-            border: 1px solid #EAE5DC;
-            scroll-snap-align: start;
-        }
-
-        .dish-img-box {
-            position: relative;
-            width: 100%;
-            height: 150px;
-            border-radius: 14px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .dish-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .bestseller-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #FFD466;
-            color: #664600;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .dish-info h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            color: #A61D24;
-            font-weight: 700;
-        }
-
-        .dish-desc {
-            font-size: 12px;
-            color: #777672;
-            line-height: 1.5;
-            margin-bottom: 12px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .btn-add {
-            width: 100%;
-            background-color: transparent;
-            border: 1px solid #CD6C71;
-            color: #A61D24;
-            padding: 8px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            background-color: #FFFBFB;
-            transition: 0.2s;
-        }
-
-        .btn-add:active {
-            background-color: #A61D24;
-            color: white;
-        }
-
-        /* --- EXPLORE FRESH MENU --- */
-        .menu-directory-section {
-            padding: 20px 24px;
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 14px 14px 14px 42px;
-            border-radius: 12px;
-            border: 1px solid #EAE5DC;
-            background-color: #FFFFFF;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-        }
-
-        .filter-tabs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 15px;
-            scrollbar-width: none;
-        }
-
-        .tab {
-            white-space: nowrap;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid #EAE5DC;
-            background-color: #FFFFFF;
-            cursor: pointer;
-        }
-
-        .tab.active {
-            background-color: #A61D24;
-            color: #FFFFFF;
-            border-color: #A61D24;
-        }
-
-        .accompaniments-box {
-            margin-top: 25px;
-            background: #FFFFFF;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #EAE5DC;
-        }
-
-        .accompaniments-box h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #F5EFE6;
-            padding-bottom: 10px;
-        }
-
-        .acc-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px dashed #EAE5DC;
-        }
-
-        .acc-item:last-child {
-            border-bottom: none;
-        }
-
-        .acc-name {
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .acc-price {
-            font-weight: 700;
-            color: #A61D24;
-            font-size: 14px;
-        }
-
-        /* --- LOCATION & HOURS --- */
-        .location-section {
-            margin: 20px 24px;
-            background-color: #FFFFFF;
-            border-radius: 24px;
-            padding: 24px;
-            border: 1px solid #EAE5DC;
-        }
-
-        .location-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        .info-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 18px;
-            align-items: flex-start;
-        }
-
-        .info-icon {
-            font-size: 18px;
-            color: #A61D24;
-            margin-top: 2px;
-        }
-
-        .info-text p {
-            font-size: 14px;
-            color: #1A1A1A;
-            line-height: 1.5;
-        }
-
-        .info-text span {
-            font-size: 13px;
-            color: #777672;
-        }
-
-        .map-box {
-            width: 100%;
-            height: 180px;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 10px;
-            border: 1px solid #EAE5DC;
-        }
-
-        .map-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .btn-directions {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            background-color: #FFFFFF;
-            color: #1A1A1A;
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* --- BOTTOM NAVIGATION BAR --- */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #FFFFFF;
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
-            border-top: 1px solid #EAE5DC;
-            z-index: 200;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
-        }
-
-        .nav-item {
-            text-align: center;
-            text-decoration: none;
-            color: #777672;
-            font-size: 11px;
-            font-weight: 500;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 25%;
-        }
-
-        .nav-item.active {
-            color: #A61D24;
-            font-weight: 600;
-        }
-
-        .nav-icon {
-            font-size: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Honest Restaurant - Sarghasan | Since 1975</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body>
 
-    <!-- 1. HEADER SECTION -->
-    <header>
-        <div class="menu-icon" onclick="alert('Menu sidebar coming soon!')">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- ORDER MODAL -->
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal-glass">
+            <button class="modal-close" onclick="closeOrderModal()" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="modal-header">
+                <span class="modal-badge"><i class="fas fa-fire"></i> Quick Order</span>
+                <h2 id="modalItemName">Dish Name</h2>
+                <div class="modal-price" id="modalItemPrice">₹0</div>
+            </div>
+
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-row-modal">
+                    <div class="form-group-modal">
+                        <label><i class="fas fa-user"></i> Customer Name</label>
+                        <input type="text" id="custName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group-modal">
+                        <label><i class="fas fa-phone"></i> Phone Number</label>
+                        <input type="tel" id="custPhone" placeholder="+91 98765 43210" required pattern="[0-9+\s-]{10,15}">
+                    </div>
+                </div>
+
+                <div class="form-group-modal">
+                    <label><i class="fas fa-map-marker-alt"></i> Sector / Area Name</label>
+                    <input type="text" id="custSector" placeholder="e.g., Sector 21, Sargasan, Kudasan..." required>
+                </div>
+
+                <div class="form-group-modal">
+                    <label><i class="fas fa-home"></i> House/Flat Number & Street Address</label>
+                    <input type="text" id="custHouse" placeholder="e.g., 402, Shyam Elegance, Palm Road" required>
+                </div>
+
+                <div class="location-note">
+                    <i class="fas fa-location-arrow"></i>
+                    <span>Your live GPS location will be automatically attached for delivery.</span>
+                </div>
+
+                <button type="submit" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Confirm Order via WhatsApp
+                </button>
+            </form>
         </div>
-        <div class="logo-container">
-            <div class="brand-name">Sarghasan</div>
-            <div class="est-tag">Est. 1975</div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="glass-header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home" class="logo" onclick="smoothScroll('home')">
+                    <span class="logo-text">Honest</span>
+                    <span class="logo-badge">Since 1975</span>
+                </a>
+
+                <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="active" onclick="smoothScroll('home')">Home</a></li>
+                    <li><a href="#menu" onclick="smoothScroll('menu')">Our Menu</a></li>
+                    <li><a href="#heritage" onclick="smoothScroll('heritage')">The Heritage</a></li>
+                    <li><a href="#findus" onclick="smoothScroll('findus')">Find Us</a></li>
+                </ul>
+
+                <a href="tel:+918980007210" class="btn-pill btn-crimson hide-mobile">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+            </div>
         </div>
-        <div style="width: 22px;"></div>
     </header>
 
-    <!-- MAIN SECTIONS WRAPPER FOR SCROLLING -->
-    <div id="home-section">
-        <!-- 2. HERO BANNER SECTION -->
-        <section class="hero">
-            <h1>Honest Quality.<br>Legendary Taste.<br>Since 1975.</h1>
-            <p>Savor our iconic Pav Bhaji cooked in Amul Butter, Ghee-tempered Punjabi Thalis, and fresh South Indian crepes right here in Sargasan, Gandhinagar.</p>
-            <button class="btn-primary" onclick="scrollToSection('menu-section')">View Menu</button>
-            <button class="btn-secondary" onclick="scrollToSection('location-section')">Locate Us</button>
-        </section>
+    <!-- HERO -->
+    <section id="home" class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-tag"><i class="fas fa-award"></i> Gujarat's Most Loved Since 1975</div>
+                    <h1>Honest Quality. <span class="highlight">Legendary Taste.</span></h1>
+                    <p class="hero-subtitle">
+                        Savor our iconic Pav Bhaji cooked in Amul Butter, Ghee-tempered Punjabi Thalis, and fresh South Indian crepes right here in <strong>Sargasan, Gandhinagar</strong>. Crafted fresh to order daily, with zero artificial colors and zero frozen ingredients.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn-pill btn-crimson" onclick="smoothScroll('menu'); return false;">
+                            <i class="fas fa-book-open"></i> View Menu
+                        </a>
+                        <a href="https://www.google.com/maps/search/Honest+Restaurant+Sarghasan+Gandhinagar+Gujarat" target="_blank" class="btn-pill btn-outline">
+                            <i class="fas fa-map-marker-alt"></i> Locate Us
+                        </a>
+                    </div>
 
-        <!-- 3. OUR PROMISE SECTION -->
-        <section class="section-promise">
-            <div class="circle-image-container">
-                <!-- Premium dynamic image link loaded directly -->
-                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=500&q=80" alt="Delicious Pav Bhaji Splendor">
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-num">50+</span>
+                            <span class="stat-label">Global Outlets</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">100%</span>
+                            <span class="stat-label">Pure Vegetarian</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-num">49</span>
+                            <span class="stat-label">Years Legacy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c8a?auto=format&fit=crop&w=800&q=80" alt="Amul Butter Pav Bhaji" class="hero-img">
+                        <div class="floating-card glass">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <strong>#1 Best Seller</strong>
+                                <span>Butter Bhaji Pav</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2 class="section-title">Our Promise</h2>
-        </section>
+        </div>
+    </section>
 
-        <!-- 4. FAMILY SPECIAL CARD -->
-        <section class="family-card" id="heritage-section">
-            <div class="tag-badge">Family Dining</div>
-            <h2>Family Special</h2>
-            <p>Always offers all-you-can-eat buffet options! Gather your loved ones for an unlimited feast of our finest preparations.</p>
-            <a href="#" class="link-more" onclick="alert('Buffet details coming soon!'); return false;">Learn More ➔</a>
-            <div class="rect-image-container">
-                <img src="https://images.unsplash.com/photo-1547928500-30694e5e40c6?auto=format&fit=crop&w=600&q=80" alt="Rich Indian Feast Table Setup">
+    <!-- FEATURE BANNER -->
+    <section class="feature-band">
+        <div class="container">
+            <div class="feature-banner glass">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Family Special: Always offers all-you-can-eat buffet options!</h3>
+                    <p>Unlimited pure vegetarian dining at our Sargasan outlet. Perfect for family gatherings, celebrations, and corporate lunches.</p>
+                </div>
+                <a href="tel:+918980007210" class="btn-pill btn-mustard">
+                    <i class="fas fa-phone"></i> Book Table
+                </a>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- 5. SIGNATURE DISHES SLIDER & MENU DIRECTORY -->
-    <div id="menu-section">
-        <section class="signature-section">
-            <h2>Signature Dishes</h2>
-            <div class="sub-tagline">The flavors that built our legacy.</div>
-            
-            <div class="dish-slider">
-                <!-- Dish Card 1 -->
-                <div class="dish-card">
-                    <div class="dish-img-box">
-                        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=500&q=80" alt="Legendary Butter Bhaji Pav">
-                        <div class="bestseller-badge">Bestseller</div>
+    <!-- HERITAGE GRID -->
+    <section class="heritage-band">
+        <div class="container">
+            <h2 class="section-title">Our Three Pillars of Trust</h2>
+            <div class="heritage-grid">
+                <div class="heritage-card glass">
+                    <div class="heritage-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>100% Pure Vegetarian</h3>
+                    <p>Celebrating absolute culinary integrity with strictly vegetarian preparations since 1975. No meat, no eggs, no compromises.</p>
+                </div>
+                <div class="heritage-card glass">
+                    <div class="heritage-icon">
+                        <i class="fas fa-butter"></i>
+                    </div>
+                    <h3>Amul Butter & Desi Ghee</h3>
+                    <p>We cook exclusively in pure Amul Butter and authentic Desi Ghee for that unmatched rich, honest flavor.</p>
+                </div>
+                <div class="heritage-card glass">
+                    <div class="heritage-icon">
+                        <i class="fas fa-mortar-pestle"></i>
+                    </div>
+                    <h3>Family Secret Spices</h3>
+                    <p>The same homemade spice blend recipe from our 1975 street-cart, now served across 50+ global branches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE DISHES -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Chef's Selection</span>
+                <h2 class="section-title">Signature Dishes Spotlight</h2>
+                <p class="section-subtitle">Handpicked favorites from our kitchen, cooked fresh in Amul Butter & Desi Ghee</p>
+            </div>
+
+            <div class="dishes-grid">
+                <div class="dish-card glass">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80" alt="Butter Bhaji Pav">
+                        <span class="dish-badge">Best Seller</span>
                     </div>
                     <div class="dish-info">
-                        <h3>Butter Bhaji Pav <span class="price">₹255</span></h3>
-                        <div class="dish-desc">Our iconic recipe, mashed vegetables simmered in signature spices and loaded with Amul butter.</div>
-                        <button class="btn-add" onclick="alert('Added Butter Bhaji Pav to order!')">Add to Order</button>
+                        <h3>Legendary Butter Bhaji Pav</h3>
+                        <p class="description">Cooked in pure Amul butter with our secret spice blend, served with butter-toasted pav rolls.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">₹255</span>
+                            <button class="btn-pill btn-crimson btn-small" onclick="openOrderModal('Legendary Butter Bhaji Pav', 255)">
+                                <i class="fab fa-whatsapp"></i> Order Now
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Dish Card 2 -->
-                <div class="dish-card">
-                    <div class="dish-img-box">
-                        <img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=500&q=80" alt="Paneer Bhurji Dosa">
-                        <div class="bestseller-badge" style="background-color: #EBF7ED; color: #1E6B29;">Chef's Pick</div>
+                <div class="dish-card glass">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Tawa Pulav">
                     </div>
                     <div class="dish-info">
-                        <h3>Paneer Bhurji Dosa <span class="price">₹250</span></h3>
-                        <div class="dish-desc">Crispy South Indian crepe generously filled with spiced, scrambled cottage cheese and onions.</div>
-                        <button class="btn-add" onclick="alert('Added Paneer Bhurji Dosa to order!')">Add to Order</button>
+                        <h3>Sargasan Special Tawa Pulav</h3>
+                        <p class="description">Basmati rice tossed with fresh vegetables and aromatic spices in Amul butter.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">₹240</span>
+                            <button class="btn-pill btn-crimson btn-small" onclick="openOrderModal('Sargasan Special Tawa Pulav', 240)">
+                                <i class="fab fa-whatsapp"></i> Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dish-card glass">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80" alt="Paneer Bhurji Dosa">
+                        <span class="dish-badge">Chef's Special</span>
+                    </div>
+                    <div class="dish-info">
+                        <h3>Paneer Bhurji Dosa</h3>
+                        <p class="description">Crispy golden crepe stuffed with spiced scrambled paneer, sambar & coconut chutney.</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">₹250</span>
+                            <button class="btn-pill btn-crimson btn-small" onclick="openOrderModal('Paneer Bhurji Dosa', 250)">
+                                <i class="fab fa-whatsapp"></i> Order Now
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 6. EXPLORE FRESH MENU SECTION -->
-        <section class="menu-directory-section">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; text-align: center; margin-bottom: 15px;">Explore Our Fresh Menu</h2>
-            
-            <div class="search-container">
-                <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" placeholder="Search for dishes..." oninput="searchDish(this.value)">
+    <!-- FULL MENU DIRECTORY -->
+    <section class="menu-directory">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Complete Menu</span>
+                <h2 class="section-title">Explore Our Fresh Menu</h2>
             </div>
 
-            <div class="filter-tabs">
-                <div class="tab active" onclick="changeTab(this)">Signature Pav Bhaji</div>
-                <div class="tab" onclick="changeTab(this)">Tawa Pulav & Rice</div>
-                <div class="tab" onclick="changeTab(this)">South Indian</div>
+            <div class="search-bar glass">
+                <i class="fas fa-search"></i>
+                <input type="text" id="menuSearch" placeholder="Search for Pav Bhaji, South Indian, Punjabi Thali..." onkeyup="filterMenu()">
             </div>
 
-            <!-- Accompaniments -->
-            <div class="accompaniments-box">
-                <h4>Accompaniments</h4>
-                <div class="acc-item">
-                    <div class="acc-name">Extra Butter Pav (2 pcs)</div>
-                    <div class="acc-price">₹40</div>
+            <div class="menu-tabs-wrapper">
+                <div class="menu-tabs" id="menuTabs">
+                    <button class="tab-btn active" onclick="filterCategory('all', this)">All Items</button>
+                    <button class="tab-btn" onclick="filterCategory('pavbhaji', this)">Pav Bhaji</button>
+                    <button class="tab-btn" onclick="filterCategory('pulav', this)">Pulav & Rice</button>
+                    <button class="tab-btn" onclick="filterCategory('chat', this)">Bombay Chat</button>
+                    <button class="tab-btn" onclick="filterCategory('south', this)">South Indian</button>
+                    <button class="tab-btn" onclick="filterCategory('punjabi', this)">Punjabi</button>
+                    <button class="tab-btn" onclick="filterCategory('tandoor', this)">Tandoor</button>
+                    <button class="tab-btn" onclick="filterCategory('chinese', this)">Indo-Chinese</button>
+                    <button class="tab-btn" onclick="filterCategory('desserts', this)">Sweets</button>
                 </div>
-                <div class="acc-item">
-                    <div class="acc-name">Masala Papad</div>
-                    <div class="acc-price">₹65</div>
+            </div>
+
+            <div class="thali-banner glass">
+                <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c4?auto=format&fit=crop&w=300&q=80" alt="Punjabi Thali" class="thali-img">
+                <div class="thali-content">
+                    <h3>Traditional Punjabi Thali</h3>
+                    <p>Complete meal cooked in pure Ghee — 2 Subjis, Dal, Rice, Pickle, Papad, Salad, 2 Butter Rotis/Parathas, and a hot Gulab Jamun.</p>
+                    <div class="thali-price">₹265</div>
+                </div>
+                <button class="btn-pill btn-crimson" onclick="openOrderModal('Traditional Punjabi Thali', 265)">
+                    <i class="fab fa-whatsapp"></i> Order Thali
+                </button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid"></div>
+        </div>
+    </section>
+
+    <!-- HERITAGE & AMBIENCE -->
+    <section id="heritage" class="heritage-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Since 1975</span>
+                <h2 class="section-title">The Heritage & Ambience</h2>
+                <p class="section-subtitle">From a single street-cart to a global vegetarian empire</p>
+            </div>
+
+            <div class="ambience-grid">
+                <div class="ambience-card glass">
+                    <div class="ambience-image">
+                        <img src="https://images.unsplash.com/photo-1559329007-40df338a2b07?auto=format&fit=crop&w=600&q=80" alt="Booth Seating">
+                    </div>
+                    <div class="ambience-info">
+                        <h3>Premium Booth Seating</h3>
+                        <p>Cozy tan and brown leather booth sofas for comfortable family dining. Fully air-conditioned indoor hall.</p>
+                    </div>
+                </div>
+                <div class="ambience-card glass">
+                    <div class="ambience-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Glass Partitions">
+                    </div>
+                    <div class="ambience-info">
+                        <h3>Modern Glass Partitions</h3>
+                        <p>Elegant glass partition seating with clean wooden tables offering privacy and an open, welcoming vibe.</p>
+                    </div>
+                </div>
+                <div class="ambience-card glass">
+                    <div class="ambience-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Ambience">
+                    </div>
+                    <div class="ambience-info">
+                        <h3>Amber-Lit Arched Niches</h3>
+                        <p>Warm ambient lighting through arched wall niches creates a sophisticated yet homely environment.</p>
+                    </div>
+                </div>
+                <div class="ambience-card glass">
+                    <div class="ambience-image">
+                        <img src="https://images.unsplash.com/photo-1559329007-40df338a2b07?auto=format&fit=crop&w=600&q=80" alt="AC Dining">
+                    </div>
+                    <div class="ambience-info">
+                        <h3>Family-Friendly AC Dining</h3>
+                        <p>Spacious air-conditioned dining designed for large families, elderly guests, and children.</p>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
 
-    <!-- 7. LOCATION & HOURS SECTION -->
-    <section class="location-section" id="location-section">
-        <h2>Location & Hours</h2>
-        
-        <div class="info-row">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
-                <p><strong>The Samved Dreams, Sargasan</strong></p>
-                <span>Behind Swagat Holiday Mall, near Sargasan Circle, Gandhinagar, Gujarat.</span>
+            <div class="plating-section glass">
+                <div class="plating-image">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=500&q=80" alt="Plating">
+                </div>
+                <div class="plating-content">
+                    <h2>Plating Masterclass</h2>
+                    <p>At Honest Restaurant Sarghasan, presentation is paramount. Our signature dishes are served in classic white oval ceramic bowls, garnished with fresh grated paneer, artistic cream swirls, hand-picked coriander, and a meticulously carved carrot rose at the center — transforming every meal into a visual celebration.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="info-row">
-            <div class="info-icon">📞</div>
-            <div class="info-text">
-                <p><strong>+91 89800 07210</strong></p>
-            </div>
-        </div>
-
-        <div class="info-row">
-            <div class="info-icon">🕒</div>
-            <div class="info-text">
-                <p><strong>11:30 AM - 10:30 PM</strong></p>
-                <span>Open all days</span>
-            </div>
-        </div>
-
-        <div class="map-box">
-            <!-- Simu
+            <h2 class="section-title">Our Global Legacy</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-year">1975</div>
+                        <h3>Humble Beginnings</h3>
+                        <p>A small family street-cart in Ahmedabad serving pure vegetarian Pav Bhaji cooked in Amul Butter.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-year">1985</div>
+                        <h3>First Restaurant</h3>
+                        <p>Expanded to a full-fledged restaurant while maintaining the same family recipes and zero artificial colors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                        <div class="timeline-year">2005</div>
+                        <h3>Gujarat Expansion</h3>
+                        <p>Multiple outlets across Gujarat including the flagship Sarghasan, Gandhinagar branch.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass">
+                       
